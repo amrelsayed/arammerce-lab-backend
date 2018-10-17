@@ -2,14 +2,15 @@
 
 namespace App\Repositories\Users;
 
-use Str;
-use Request;
-use Collection;
-use RepositoryManager;
+use App\Items\User\User as UserItem;
 use App\Models\User\User;
 use App\Models\User\UserAccessToken;
-use App\Items\User\User as UserItem;
+use Collection;
 use HZ\Laravel\Organizer\App\Contracts\RepositoryInterface;
+use Model;
+use RepositoryManager;
+use Request;
+use Str;
 
 class UsersRepository extends RepositoryManager implements RepositoryInterface
 {
@@ -45,7 +46,7 @@ class UsersRepository extends RepositoryManager implements RepositoryInterface
     /**
      * {@inheritDoc}
      */
-    protected function setData($user, Request $request)
+    protected function setData(Model $user, Request $request)
     {
         $user->city = $request->city;
         $user->email = $request->email;
@@ -72,7 +73,7 @@ class UsersRepository extends RepositoryManager implements RepositoryInterface
     /**
      * {@inheritDoc}
      */
-    protected function onCreate($user, Request $request)
+    protected function onCreate(Model $user, Request $request)
     {
         $this->generateAccessToken($user, $request);
     }

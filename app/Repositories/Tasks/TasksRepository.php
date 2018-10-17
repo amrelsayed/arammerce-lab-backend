@@ -2,17 +2,18 @@
 
 namespace App\Repositories\Tasks;
 
-use Str;
-use Request;
-use Collection;
-use Carbon\Carbon;
-use RepositoryManager;
-use App\Models\Task\Task;
-use App\Models\Task\Requirement as TaskRequirement;
-use App\Models\Task\User as TaskUser;
-use App\Models\Task\Supervisor as TaskSupervisor;
 use App\Items\Task\Task as TaskItem;
+use App\Models\Task\Requirement as TaskRequirement;
+use App\Models\Task\Supervisor as TaskSupervisor;
+use App\Models\Task\Task;
+use App\Models\Task\User as TaskUser;
+use Carbon\Carbon;
+use Collection;
 use HZ\Laravel\Organizer\App\Contracts\RepositoryInterface;
+use Model;
+use RepositoryManager;
+use Request;
+use Str;
 
 class TasksRepository extends RepositoryManager implements RepositoryInterface
 {
@@ -51,14 +52,14 @@ class TasksRepository extends RepositoryManager implements RepositoryInterface
     /**
      * {@inheritDoc}
      */
-    protected function setData($task, Request $request)
+    protected function setData(Model $task, Request $request)
     {
     } 
 
     /**
      * {@inheritDoc}
      */
-    protected function onSave($task, Request $request)
+    protected function onSave(Model $task, Request $request)
     {
         $taskRequirements = $task->requirements();
 
@@ -107,6 +108,14 @@ class TasksRepository extends RepositoryManager implements RepositoryInterface
         $taskInfo->supervisors = $task->supervisors()->pluck('supervisor_id');
 
         return new TaskItem($taskInfo);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function select()
+    {
+        # code...
     }
 
     /**

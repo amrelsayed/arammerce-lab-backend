@@ -1,14 +1,15 @@
 <?php
 namespace App\Repositories\Posts;
 
-use Str;
-use Item;
-use Request;
-use Collection;
-use Carbon\Carbon;
-use RepositoryManager;
 use App\Models\Post\Tag;
+use Carbon\Carbon;
+use Collection;
 use HZ\Laravel\Organizer\App\Contracts\RepositoryInterface;
+use Model;
+use Item;
+use RepositoryManager;
+use Request;
+use Str;
 
 class TagsRepository extends RepositoryManager implements RepositoryInterface
 {
@@ -41,7 +42,7 @@ class TagsRepository extends RepositoryManager implements RepositoryInterface
     /**
      * {@inheritDoc}
      */
-    protected function setData($tag, Request $request)
+    protected function setData(Model $tag, Request $request)
     {
         $tag->name = $request->name;
 

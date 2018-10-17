@@ -50,7 +50,7 @@ Route::group([
     ], function () {
         Route::resource('/polls', 'Polls\PollsController');
         Route::resource('/users', 'Users\UsersController');
-        Route::resource('/Tasks', 'Tasks\TasksController');
+        Route::resource('/tasks', 'Tasks\TasksController');
         Route::resource('/tags', 'Posts\TagsController');
         Route::resource('/posts', 'Posts\PostsController');
     });

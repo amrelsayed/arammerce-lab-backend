@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Api\Management\Polls;
+namespace App\Http\Controllers\Api\Management\Tasks;
 
 class TasksController extends \AdminApiController
 {

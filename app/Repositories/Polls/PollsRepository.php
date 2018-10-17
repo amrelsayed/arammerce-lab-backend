@@ -2,15 +2,16 @@
 
 namespace App\Repositories\Polls;
 
-use Str;
-use Request;
-use Collection;
-use Carbon\Carbon;
-use RepositoryManager;
+use App\Items\Poll\Poll as PollItem;
 use App\Models\Poll\Poll;
 use App\Models\Poll\Vote as PollVote;
-use App\Items\Poll\Poll as PollItem;
+use Carbon\Carbon;
+use Collection;
 use HZ\Laravel\Organizer\App\Contracts\RepositoryInterface;
+use Model;
+use RepositoryManager;
+use Request;
+use Str;
 
 class PollsRepository extends RepositoryManager implements RepositoryInterface
 {
@@ -75,7 +76,7 @@ class PollsRepository extends RepositoryManager implements RepositoryInterface
     /**
      * {@inheritDoc}
      */
-    protected function setData($poll, Request $request)
+    protected function setData(Model $poll, Request $request)
     {
         $poll->title = $request->title;
 
@@ -93,7 +94,7 @@ class PollsRepository extends RepositoryManager implements RepositoryInterface
     /**
      * {@inheritDoc}
      */
-    protected function onSave($poll, Request $request)
+    protected function onSave(Model $poll, Request $request)
     {
         $poll->answers()->delete();
 
