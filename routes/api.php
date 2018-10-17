@@ -53,5 +53,6 @@ Route::group([
         Route::resource('/tasks', 'Tasks\TasksController');
         Route::resource('/tags', 'Posts\TagsController');
         Route::resource('/posts', 'Posts\PostsController');
+        Route::resource('/categories', 'Categories\CategoriesController');
     });
 });

@@ -30,6 +30,7 @@ return [
         'tags' => App\Repositories\Posts\TagsRepository::class,
         'events' => App\Repositories\Events\EventsRepository::class,
         'tasks' => App\Repositories\Tasks\TasksRepository::class,
+        'categories' => App\Repositories\Categories\CategoriesRepository::class,
     ],
     
     /*
